@@ -5,6 +5,15 @@
 {% endblock header %}
 
 {% block content %}
-    <p>This is a message board for friendly messages.</p>
-{% endblock content %}
+  <p><a href="{{ url_for('posts.create') }}">Add a new post</a></p>
 
+  {% if posts %}
+    <ul>
+      {% for post in posts %}
+        <li><strong>{{ post.author }}</strong>: {{ post.message }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No posts yet.</p>
+  {% endif %}
+{% endblock content %}
